@@ -1,0 +1,19 @@
+using UnityEngine;
+
+public class Coin : MonoBehaviour
+{
+    public int coinValue = 1; 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            FindObjectOfType<CoinCounter>().AddCoin(coinValue);
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerExit(Collider gameArea)
+    {
+        Destroy(gameObject);
+    }
+}
