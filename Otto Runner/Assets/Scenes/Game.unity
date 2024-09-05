@@ -1183,7 +1183,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 756616687}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1486,7 +1486,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1029550846}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1557,7 +1557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1058371592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   groundYPosition: 0.55
   crouchYPosition: 1
   minAirYPosition: 1.8
-  maxAirYPosition: 4
+  maxAirYPosition: 3.5
   spawnXPosition: 15
 --- !u!4 &1203239950
 Transform:
@@ -2464,7 +2464,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1564713068}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111354934bdc38b4abaa2eed59358e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: {x: 0, y: -135, z: 0}
+  gravity: {x: 0, y: -170, z: 0}
   jumpSpeed: {x: 0, y: 40, z: 0}
   bufferTime: 0.1
 --- !u!1 &2105782989
