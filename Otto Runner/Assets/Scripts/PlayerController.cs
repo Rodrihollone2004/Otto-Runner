@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Vector3 gravity;
-    public Vector3 jumpSpeed;
+    [SerializeField] private Vector3 gravity;
+    [SerializeField] private Vector3 jumpSpeed;
+    [SerializeField] private float fastFallMultiplier = 3f;
 
     [SerializeField] private float bufferTime = 0.2f;
     private float bufferCounter = 0f;
@@ -27,6 +28,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Movement();
+        FastFall();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        isGrounded = true;
+    }
+
+    private void Movement()
+    {
+
         if (bufferCounter > 0)
         {
             bufferCounter -= Time.deltaTime;
@@ -50,7 +63,7 @@ public class PlayerController : MonoBehaviour
             StopSliding();
         }
 
-        if ((bufferCounter > 0) && isGrounded && !isSliding) 
+        if ((bufferCounter > 0) && isGrounded && !isSliding)
         {
             rb.velocity = jumpSpeed;
             isGrounded = false;
@@ -58,9 +71,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void FastFall()
     {
-        isGrounded = true;
+        if (!isGrounded && Input.GetKey(KeyCode.DownArrow))
+        {
+            rb.velocity += Vector3.down * fastFallMultiplier * Time.deltaTime;
+            Debug.Log("Velocity: " + rb.velocity);
+        }
     }
 
     private void StartSliding()

@@ -4,17 +4,19 @@ using System.Collections.Generic;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public List<GameObject> groundObstacles;
-    public List<GameObject> airObstacles;    
-    public List<GameObject> crouchObstacles;  
+    [SerializeField] List<GameObject> groundObstacles; //Obstaculos del piso (macetas)
+    [SerializeField] List<GameObject> airObstacles;    //Obstáculos del aire (pajaros)
+    [SerializeField] List<GameObject> crouchObstacles;  //Obstáculos para deslizarse (personas)
+    [SerializeField] List<GameObject> benchObstacles;  //Obstáculos que incluyen un banquito y una maceta
 
-    public float minSpawnInterval = 1.0f;
-    public float maxSpawnInterval = 1.5f;
-    public float groundYPosition = 0.55f;   
-    public float crouchYPosition = 1.0f;    
-    public float minAirYPosition = 1.8f;     
-    public float maxAirYPosition = 2.5f;    
-    public float spawnXPosition = 15.0f;     
+
+    [SerializeField] float minSpawnInterval = 1.0f;
+    [SerializeField] float maxSpawnInterval = 1.5f;
+    [SerializeField] float groundYPosition = 0.55f;   
+    [SerializeField] float crouchYPosition = 1.0f;    
+    [SerializeField] float minAirYPosition = 1.8f;     
+    [SerializeField] float maxAirYPosition = 2.5f;    
+    [SerializeField] float spawnXPosition = 15.0f;     
 
     void Start()
     {
@@ -43,11 +45,17 @@ public class ObstacleSpawner : MonoBehaviour
                 selectedObstaclePrefab = groundObstacles[randomIndex];
                 spawnYPosition = groundYPosition;
             }
+            else if (obstacleType <= 0.99f && benchObstacles.Count > 0)
+            {
+                int randomIndex = Random.Range(0, benchObstacles.Count);
+                selectedObstaclePrefab = benchObstacles[randomIndex];
+                spawnYPosition = crouchYPosition;
+            }
             else if (airObstacles.Count > 0)
             {
                 int randomIndex = Random.Range(0, airObstacles.Count);
                 selectedObstaclePrefab = airObstacles[randomIndex];
-                spawnYPosition = Random.Range(minAirYPosition, maxAirYPosition); 
+                spawnYPosition = Random.Range(minAirYPosition, maxAirYPosition);
             }
             else
             {

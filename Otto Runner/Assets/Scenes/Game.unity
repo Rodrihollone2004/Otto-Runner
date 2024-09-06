@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1557,7 +1557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1058371592
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1857,6 +1857,8 @@ MonoBehaviour:
   - {fileID: 7275693601263242171, guid: b6d0f238474187f41a7a25d7e9aab624, type: 3}
   crouchObstacles:
   - {fileID: 8732391041825295969, guid: 2730fbf5dc2be7e4d8ef95c28fba3fb1, type: 3}
+  benchObstacles:
+  - {fileID: 5905252934493333538, guid: 8a91f03729da3d44486c27463ea05e75, type: 3}
   minSpawnInterval: 0.5
   maxSpawnInterval: 0.7
   groundYPosition: 0.55
@@ -2952,7 +2954,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &2019606118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3053,6 +3055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: {x: 0, y: -170, z: 0}
   jumpSpeed: {x: 0, y: 40, z: 0}
+  fastFallMultiplier: 25
   bufferTime: 0.1
 --- !u!1 &2105782989
 GameObject:
