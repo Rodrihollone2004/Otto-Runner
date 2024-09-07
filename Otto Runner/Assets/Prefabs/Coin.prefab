@@ -135,6 +135,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 1
+  obstacle: {fileID: 1569906067522571033, guid: c76b93f566e983c46a3da73c50b9d045, type: 3}
+  bench: {fileID: 5905252934493333538, guid: 8a91f03729da3d44486c27463ea05e75, type: 3}
+  crouch: {fileID: 8732391041825295969, guid: 2730fbf5dc2be7e4d8ef95c28fba3fb1, type: 3}
 --- !u!54 &8172811031233055955
 Rigidbody:
   m_ObjectHideFlags: 0

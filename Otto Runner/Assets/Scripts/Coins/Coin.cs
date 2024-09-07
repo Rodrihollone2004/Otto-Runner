@@ -1,8 +1,9 @@
+using Palmmedia.ReportGenerator.Core.Parser.Analysis;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public int coinValue = 1; 
+    public int coinValue = 1;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +12,12 @@ public class Coin : MonoBehaviour
             FindObjectOfType<CoinCounter>().AddCoin(coinValue);
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+        }
     }
+
     private void OnTriggerExit(Collider gameArea)
     {
         Destroy(gameObject);

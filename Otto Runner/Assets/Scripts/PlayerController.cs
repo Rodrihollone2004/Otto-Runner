@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
         if (!isGrounded && Input.GetKey(KeyCode.DownArrow))
         {
             rb.velocity += Vector3.down * fastFallMultiplier * Time.deltaTime;
-            Debug.Log("Velocity: " + rb.velocity);
         }
     }
 

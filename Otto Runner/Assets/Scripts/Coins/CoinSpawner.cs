@@ -3,12 +3,13 @@ using System.Collections;
 
 public class CoinSpawner : MonoBehaviour
 {
-    public GameObject coinPrefab;    
+    public GameObject coinPrefab;
+
     public float minSpawnInterval = 0.2f;  
     public float maxSpawnInterval = 0.3f; 
     public float minYPosition = 0.7f;     
     public float maxYPosition = 5f;      
-    public float spawnXPosition = 15.0f;   
+    public float spawnXPosition = 15.0f;
 
     void Start()
     {
