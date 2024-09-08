@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1864424690003293468}
   - component: {fileID: 1963616692877586951}
   - component: {fileID: 7765470876098883675}
-  - component: {fileID: 7471772691014573140}
+  - component: {fileID: 7456980247090461533}
   m_Layer: 0
   m_Name: Maceta
   m_TagString: Obstacle
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 1
---- !u!114 &7471772691014573140
+--- !u!114 &7456980247090461533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4162053124065763239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ef9074129c9b945afbf6f92c066d68, type: 3}
+  m_Script: {fileID: 11500000, guid: becf82de15a3fc649884fc8349cfb4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollFactor: -1
@@ -158,8 +158,8 @@ GameObject:
   m_Component:
   - component: {fileID: 230457973840603076}
   - component: {fileID: 2597253575591612379}
-  - component: {fileID: 8487519785143743249}
   - component: {fileID: 1285284774447551624}
+  - component: {fileID: 7832088624255505208}
   m_Layer: 0
   m_Name: Abajo
   m_TagString: Obstacle
@@ -203,20 +203,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.3453643, y: 0.1004094, z: 1}
   m_Center: {x: -0.0041825213, y: 0.3591176, z: 0}
---- !u!114 &8487519785143743249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601104181945774800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ef9074129c9b945afbf6f92c066d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollFactor: -1
-  gameVelocity: {x: 15, y: 0, z: 0}
 --- !u!54 &1285284774447551624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -244,6 +230,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 1
+--- !u!114 &7832088624255505208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601104181945774800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: becf82de15a3fc649884fc8349cfb4af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollFactor: -1
+  gameVelocity: {x: 15, y: 0, z: 0}
 --- !u!1 &5905252934493333538
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,8 +427,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.653798, y: 0.24519789, z: 1}
-  m_Center: {x: -0.16411942, y: -0.21671294, z: 0}
+  m_Size: {x: 3.3100526, y: 0.5699805, z: 1}
+  m_Center: {x: 0.0077486173, y: -0.05432538, z: 0}
 --- !u!54 &6709298666770624744
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 4612722692010301454}
   - component: {fileID: 1799246058370530337}
   - component: {fileID: 1808696397148644797}
-  - component: {fileID: 2152885525536860697}
+  - component: {fileID: 7833744925335637900}
   m_Layer: 0
   m_Name: Costado
   m_TagString: Obstacle
@@ -552,7 +552,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 1
---- !u!114 &2152885525536860697
+--- !u!114 &7833744925335637900
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9051291041859990558}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ef9074129c9b945afbf6f92c066d68, type: 3}
+  m_Script: {fileID: 11500000, guid: becf82de15a3fc649884fc8349cfb4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollFactor: -1

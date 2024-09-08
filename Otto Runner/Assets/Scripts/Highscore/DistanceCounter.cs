@@ -1,13 +1,13 @@
+using TMPro;
 using UnityEngine;
-using TMPro; 
 
 public class DistanceCounter : MonoBehaviour
 {
     public float playerSpeed = 15f;
-    private float distance = 0f;    
-    private float highscore = 0f;   
-    public TMP_Text distanceText;  
-    public TMP_Text highscoreText;  
+    private float distance = 0f;
+    private float highscore = 0f;
+    public TMP_Text distanceText;
+    public TMP_Text highscoreText;
 
     void Start()
     {
@@ -24,10 +24,15 @@ public class DistanceCounter : MonoBehaviour
         if (distance > highscore)
         {
             highscore = distance;
-            PlayerPrefs.SetFloat("Highscore", highscore); 
-            PlayerPrefs.Save(); 
+            PlayerPrefs.SetFloat("Highscore", highscore);
+            PlayerPrefs.Save();
             UpdateHighscoreUI();
         }
+    }
+
+    public float GetDistance()
+    {
+        return distance;
     }
 
     void UpdateHighscoreUI()

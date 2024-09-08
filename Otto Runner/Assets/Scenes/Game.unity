@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 722858624}
   - component: {fileID: 722858626}
   - component: {fileID: 722858627}
+  - component: {fileID: 722858628}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1104,6 +1105,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartText: {fileID: 1058371593}
+--- !u!114 &722858628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722858623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35395e27f44119b48bcf499408e8f38a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLight: {fileID: 705507994}
+  normalLightColor: {r: 1, g: 1, b: 1, a: 1}
+  darkLightColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  changeInterval: 1000
 --- !u!1 &756616684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,6 +1868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cf2fc5375e9dc44a36a1a40f909f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 722858623}
   groundObstacles:
   - {fileID: 1569906067522571033, guid: c76b93f566e983c46a3da73c50b9d045, type: 3}
   airObstacles:
