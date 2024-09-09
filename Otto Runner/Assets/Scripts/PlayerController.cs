@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void FastFall()
     {
-        if (!isGrounded && Input.GetKeyDown(KeyCode.S) || 
+        if (!isGrounded && !isSliding && Input.GetKeyDown(KeyCode.S) || 
             Input.GetKeyDown(KeyCode.DownArrow) || 
             Input.GetKeyDown(KeyCode.LeftShift) || 
             Input.GetMouseButtonDown(1))
@@ -90,10 +90,10 @@ public class PlayerController : MonoBehaviour
 
     private void StartSliding()
     {
-        if (!isSliding)
+        if (!isSliding && isGrounded)
         {
             isSliding = true;
-            playerCollider.size = slidingColliderSize; 
+            playerCollider.size = slidingColliderSize;
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z); 
         }
     }
@@ -103,7 +103,8 @@ public class PlayerController : MonoBehaviour
         if (isSliding)
         {
             isSliding = false;
-            playerCollider.size = originalColliderSize;
+            playerCollider.size = originalColliderSize; 
         }
     }
+
 }
