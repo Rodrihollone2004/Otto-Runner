@@ -35,6 +35,14 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
+
+        if (Input.GetKey(KeyCode.S) ||
+            Input.GetKey(KeyCode.DownArrow) ||
+            Input.GetKey(KeyCode.LeftShift) ||
+            Input.GetMouseButton(1))
+        {
+            StartSliding();
+        }
     }
 
     private void Movement()
