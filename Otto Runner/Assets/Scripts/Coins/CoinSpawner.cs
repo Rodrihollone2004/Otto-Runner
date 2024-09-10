@@ -11,6 +11,10 @@ public class CoinSpawner : MonoBehaviour
     public float maxYPosition = 5f;      
     public float spawnXPosition = 15.0f;
 
+    private bool stopSpawnCoins = true;
+
+    public bool StopSpawnCoins { get => stopSpawnCoins; set => stopSpawnCoins = value; }
+
     void Start()
     {
         StartCoroutine(SpawnCoins());
@@ -18,7 +22,7 @@ public class CoinSpawner : MonoBehaviour
 
     IEnumerator SpawnCoins()
     {
-        while (true)
+        while (stopSpawnCoins)
         {
             float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
 

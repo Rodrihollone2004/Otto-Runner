@@ -6,16 +6,23 @@ public class EndlessScroll : MonoBehaviour
     public float scrollFactor = -1;
     public Vector3 gameVelocity;
     private bool collisionOccurred = false;
-    private bool isGamePaused = false;
 
     private RestartTextManager restartTextManager;
 
+    private ObstacleSpawner obstacleSpawner;
+    private CoinSpawner coinSpawner;
+
     private Rigidbody rb;
+
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = gameVelocity * scrollFactor;
+        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        obstacleSpawner = FindObjectOfType<ObstacleSpawner>();
+        coinSpawner = FindObjectOfType<CoinSpawner>();  
 
         restartTextManager = FindObjectOfType<RestartTextManager>();
 
@@ -32,23 +39,27 @@ public class EndlessScroll : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        obstacleSpawner.NoSpawn = false;
+        coinSpawner.StopSpawnCoins = false;
         collisionOccurred = true;
-        if (!isGamePaused)
-        {
-            Time.timeScale = 0; 
-            isGamePaused = true;
+        animator.SetBool("isDead", true);
+        gameVelocity = Vector3.zero;
+        GameManger.instance.Dead = true;
 
-            if (restartTextManager != null)
+        if (restartTextManager != null)
             {
                 restartTextManager.ShowRestartText();
             }
-        }
     }
     void Update()
     {
+        if (GameManger.instance.Dead)
+        {
+            rb.velocity = gameVelocity * 0;
+        }
         if (collisionOccurred && Input.anyKeyDown)
         {
-            Time.timeScale = 1;
+            animator.SetBool("isDead", false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

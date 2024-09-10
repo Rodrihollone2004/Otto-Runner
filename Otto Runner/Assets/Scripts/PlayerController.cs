@@ -15,15 +15,22 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 originalColliderSize; 
     private Vector3 slidingColliderSize; 
+    private Vector3 originalColliderCenter; 
+    private Vector3 slidingColliderCenter; 
+
+    private Animator animator;
 
     void Awake()
     {
         Physics.gravity = gravity;
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<BoxCollider>();
+        animator = GetComponent<Animator>();
 
+        originalColliderCenter = playerCollider.center;
         originalColliderSize = playerCollider.size;
         slidingColliderSize = new Vector3(originalColliderSize.x, originalColliderSize.y / 2, originalColliderSize.z); 
+        slidingColliderCenter = new Vector3(originalColliderCenter.x, originalColliderCenter.y / 2, originalColliderCenter.z); 
     }
 
     void Update()
@@ -35,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isGrounded = true;
-
+        animator.SetBool("isJumping", false);
         if (Input.GetKey(KeyCode.S) ||
             Input.GetKey(KeyCode.DownArrow) ||
             Input.GetKey(KeyCode.LeftShift) ||
@@ -58,22 +65,23 @@ public class PlayerController : MonoBehaviour
             Input.GetKeyDown(KeyCode.UpArrow) ||
             Input.GetMouseButtonDown(0))
         {
+            animator.SetBool("isJumping", true);
             bufferCounter = bufferTime;
         }
-
-        if (Input.GetKeyDown(KeyCode.S) || 
-            Input.GetKeyDown(KeyCode.DownArrow) || 
-            Input.GetKeyDown(KeyCode.LeftShift) || 
-            Input.GetMouseButtonDown(1))
+        if (Input.GetKey(KeyCode.S) ||
+             Input.GetKey(KeyCode.DownArrow) ||
+             Input.GetKey(KeyCode.LeftShift) ||
+             Input.GetMouseButton(1))
         {
+            animator.SetBool("isJumping", false);
             StartSliding();
         }
-
         if (Input.GetKeyUp(KeyCode.S) || 
             Input.GetKeyUp(KeyCode.DownArrow) || 
             Input.GetKeyUp(KeyCode.LeftShift) || 
             Input.GetMouseButtonUp(1))
         {
+            animator.SetBool("isJumping", false);
             StopSliding();
         }
 
@@ -82,6 +90,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = jumpSpeed;
             isGrounded = false;
             bufferCounter = 0;
+
         }
     }
 
@@ -102,7 +111,9 @@ public class PlayerController : MonoBehaviour
         {
             isSliding = true;
             playerCollider.size = slidingColliderSize;
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z); 
+            playerCollider.center = slidingColliderCenter;
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+            animator.SetBool("isCrawling", true);
         }
     }
 
@@ -111,7 +122,23 @@ public class PlayerController : MonoBehaviour
         if (isSliding)
         {
             isSliding = false;
-            playerCollider.size = originalColliderSize; 
+            playerCollider.size = originalColliderSize;
+            playerCollider.center = originalColliderCenter;
+            animator.SetBool("isCrawling", false);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Banco"))
+        {
+        StartSliding();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Banco"))
+        {
+            StopSliding();
         }
     }
 

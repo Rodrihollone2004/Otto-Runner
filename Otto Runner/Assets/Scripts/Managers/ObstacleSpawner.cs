@@ -20,6 +20,10 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] float maxAirYPosition = 3.5f;
     [SerializeField] float spawnXPosition = 15.0f;
 
+    private bool stopSpawnObstacles = true;
+
+    public bool NoSpawn { get => stopSpawnObstacles; set => stopSpawnObstacles = value; }
+
     void Start()
     {
         if (gameManager != null)
@@ -41,7 +45,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     IEnumerator SpawnObstacles()
     {
-        while (true)
+        while (stopSpawnObstacles)
         {
             float distance = distanceCounter != null ? distanceCounter.GetDistance() : 0f;
             float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
@@ -68,22 +72,22 @@ public class ObstacleSpawner : MonoBehaviour
     {
         List<GameObject> availableObstacles = new List<GameObject>();
 
-        if (distance < 500f)
+        if (distance < 200f)
         {
             availableObstacles.AddRange(groundObstacles);
         }
-        else if (distance >= 500f && distance < 1000f)
+        else if (distance >= 200f && distance < 400f)
         {
             availableObstacles.AddRange(groundObstacles);
             availableObstacles.AddRange(crouchObstacles);
         }
-        else if (distance >= 1000f && distance < 1500f)
+        else if (distance >= 400f && distance < 600f)
         {
             availableObstacles.AddRange(groundObstacles);
             availableObstacles.AddRange(benchObstacles);
             availableObstacles.AddRange(crouchObstacles);
         }
-        else if (distance >= 1500f && distance < 2000f)
+        else if (distance >= 600f && distance < 800f)
         {
             availableObstacles.AddRange(groundObstacles);
             availableObstacles.AddRange(airObstacles);

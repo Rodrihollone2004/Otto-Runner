@@ -14,4 +14,11 @@ public class BenchMov : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = gameVelocity * scrollFactor;
     }
+    private void Update()
+    {
+        if (GameManger.instance.Dead)
+        {
+            rb.velocity = gameVelocity * 0;
+        }
+    }
 }

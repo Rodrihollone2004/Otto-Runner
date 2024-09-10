@@ -16,11 +16,12 @@ public class DistanceCounter : MonoBehaviour
     }
 
     void Update()
-    {
-        distance += playerSpeed * Time.deltaTime;
-
-        distanceText.text = "Distance: " + distance.ToString("F2") + "m";
-
+    {    
+        if (!GameManger.instance.Dead)
+        {
+            distance += playerSpeed * Time.deltaTime;
+            distanceText.text = "Distance: " + distance.ToString("F2") + "m";
+        }
         if (distance > highscore)
         {
             highscore = distance;
@@ -28,6 +29,9 @@ public class DistanceCounter : MonoBehaviour
             PlayerPrefs.Save();
             UpdateHighscoreUI();
         }
+       
+            
+        
     }
 
     public float GetDistance()

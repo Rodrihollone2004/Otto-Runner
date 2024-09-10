@@ -18,4 +18,11 @@ public class BackMov : MonoBehaviour
     {
         transform.position += Vector3.right * (gameArea.bounds.size.x + GetComponent<BoxCollider>().size.x);
     }
+    private void Update()
+    {
+        if (GameManger.instance.Dead)
+        {
+            rb.velocity = gameVelocity * 0;
+        }
+    }
 }
