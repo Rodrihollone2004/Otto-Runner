@@ -2238,7 +2238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 722858623}
   groundObstacles:
-  - {fileID: 1569906067522571033, guid: c76b93f566e983c46a3da73c50b9d045, type: 3}
+  - {fileID: 1465891226239001633, guid: 4fe4db3ae9225034aa790809ba1f4774, type: 3}
   airObstacles:
   - {fileID: 7275693601263242171, guid: b6d0f238474187f41a7a25d7e9aab624, type: 3}
   crouchObstacles:

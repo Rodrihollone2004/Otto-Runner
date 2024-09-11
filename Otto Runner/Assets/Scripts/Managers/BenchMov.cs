@@ -21,4 +21,8 @@ public class BenchMov : MonoBehaviour
             rb.velocity = gameVelocity * 0;
         }
     }
+    private void OnTriggerExit(Collider gameArea)
+    {
+        Destroy(gameObject);
+    }
 }

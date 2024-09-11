@@ -60,12 +60,14 @@ public class ObstacleSpawner : MonoBehaviour
                 float spawnYPosition = GetSpawnYPosition(selectedObstaclePrefab);
 
                 Vector3 spawnPosition = new Vector3(spawnXPosition, spawnYPosition, 0);
-                Instantiate(selectedObstaclePrefab, spawnPosition, Quaternion.identity);
+
+                Instantiate(selectedObstaclePrefab, spawnPosition, selectedObstaclePrefab.transform.rotation);
             }
 
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+
 
 
     private List<GameObject> GetAvailableObstacles(float distance)
