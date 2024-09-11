@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LeaderboardPlayers : MonoBehaviour
+[Serializable]
+public class LeaderboardPlayers
 {
-    private string name;
+    private string namee;
     private float score;
 
     public float Score { get => score; set => score = value; }
-    public string Name { get => name; set => name = value; }
+    public string Namee { get => namee; set => namee = value; }
 
     public LeaderboardPlayers(string name, float score)
     {
-        this.name = name;
+        this.namee = name;
         this.score = score;
     }
 }

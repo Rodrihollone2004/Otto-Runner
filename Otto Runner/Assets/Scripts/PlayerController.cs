@@ -16,12 +16,14 @@ public class PlayerController : MonoBehaviour
     private Vector3 originalColliderSize; 
     private Vector3 slidingColliderSize; 
     private Vector3 originalColliderCenter; 
-    private Vector3 slidingColliderCenter; 
+    private Vector3 slidingColliderCenter;
 
+    private LeaderboardManager leaderboardManager;
     private Animator animator;
 
     void Awake()
     {
+        leaderboardManager = FindObjectOfType<LeaderboardManager>();
         Physics.gravity = gravity;
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<BoxCollider>();
@@ -60,10 +62,10 @@ public class PlayerController : MonoBehaviour
             bufferCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) ||
-            Input.GetKeyDown(KeyCode.W) ||
-            Input.GetKeyDown(KeyCode.UpArrow) ||
-            Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) && !leaderboardManager.GameObjectLeaderboard.active ||
+            Input.GetKeyDown(KeyCode.W) && !leaderboardManager.GameObjectLeaderboard.active ||
+            Input.GetKeyDown(KeyCode.UpArrow) && !leaderboardManager.GameObjectLeaderboard.active ||
+            Input.GetMouseButtonDown(0) && !leaderboardManager.GameObjectLeaderboard.active)
         {
             animator.SetBool("isJumping", true);
             bufferCounter = bufferTime;
