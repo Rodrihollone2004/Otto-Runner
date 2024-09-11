@@ -9,6 +9,8 @@ public class DistanceCounter : MonoBehaviour
     public TMP_Text distanceText;
     public TMP_Text highscoreText;
 
+    public float Highscore { get => highscore; set => highscore = value; }
+
     void Start()
     {
         highscore = PlayerPrefs.GetFloat("Highscore", 0f);
@@ -16,7 +18,7 @@ public class DistanceCounter : MonoBehaviour
     }
 
     void Update()
-    {    
+    {
         if (!GameManger.instance.Dead)
         {
             distance += playerSpeed * Time.deltaTime;
@@ -24,14 +26,12 @@ public class DistanceCounter : MonoBehaviour
         }
         if (distance > highscore)
         {
+            GameManger.instance.IsLeaderboard = true;
             highscore = distance;
             PlayerPrefs.SetFloat("Highscore", highscore);
             PlayerPrefs.Save();
             UpdateHighscoreUI();
         }
-       
-            
-        
     }
 
     public float GetDistance()

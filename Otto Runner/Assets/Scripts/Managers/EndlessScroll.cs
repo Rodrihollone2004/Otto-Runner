@@ -16,13 +16,16 @@ public class EndlessScroll : MonoBehaviour
 
     private Animator animator;
 
+    LeaderboardManager leaderboardManager;
+
     void Start()
     {
+        leaderboardManager = FindAnyObjectByType<LeaderboardManager>();
         rb = GetComponent<Rigidbody>();
         rb.velocity = gameVelocity * scrollFactor;
         animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         obstacleSpawner = FindObjectOfType<ObstacleSpawner>();
-        coinSpawner = FindObjectOfType<CoinSpawner>();  
+        coinSpawner = FindObjectOfType<CoinSpawner>();
 
         restartTextManager = FindObjectOfType<RestartTextManager>();
 
@@ -46,10 +49,13 @@ public class EndlessScroll : MonoBehaviour
         gameVelocity = Vector3.zero;
         GameManger.instance.Dead = true;
 
+        if (GameManger.instance.IsLeaderboard)
+            leaderboardManager.EnterLeaderboard();
+
         if (restartTextManager != null)
-            {
-                restartTextManager.ShowRestartText();
-            }
+        {
+            restartTextManager.ShowRestartText();
+        }
     }
     void Update()
     {
@@ -57,7 +63,7 @@ public class EndlessScroll : MonoBehaviour
         {
             rb.velocity = gameVelocity * 0;
         }
-        if (collisionOccurred && Input.anyKeyDown)
+        if (collisionOccurred && Input.anyKeyDown && GameManger.instance.IsLeaderboard == false)
         {
             animator.SetBool("isDead", false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
