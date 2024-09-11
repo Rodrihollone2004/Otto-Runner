@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private LeaderboardManager leaderboardManager;
     private Animator animator;
 
+    [SerializeField] private AudioSource jumpAudioSource;
     void Awake()
     {
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
@@ -69,6 +70,11 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", true);
             bufferCounter = bufferTime;
+
+            if (jumpAudioSource != null)
+            {
+                jumpAudioSource.Play();
+            }
         }
         if (Input.GetKey(KeyCode.S) ||
              Input.GetKey(KeyCode.DownArrow) ||
