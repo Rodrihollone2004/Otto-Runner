@@ -20,6 +20,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] float maxAirYPosition = 3.5f;
     [SerializeField] float spawnXPosition = 15.0f;
 
+
     private bool stopSpawnObstacles = true;
 
     public bool NoSpawn { get => stopSpawnObstacles; set => stopSpawnObstacles = value; }
@@ -104,17 +105,22 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (groundObstacles.Contains(obstacle))
         {
-            return groundYPosition;
+            return groundYPosition; 
         }
         else if (airObstacles.Contains(obstacle))
         {
-            return Random.Range(minAirYPosition, maxAirYPosition);
+            return Random.Range(minAirYPosition, maxAirYPosition); 
         }
-        else if (crouchObstacles.Contains(obstacle) || benchObstacles.Contains(obstacle))
+        else if (crouchObstacles.Contains(obstacle))
         {
-            return crouchYPosition;
+            return crouchYPosition; 
+        }
+        else if (benchObstacles.Contains(obstacle)) 
+        {
+            return -0.43f; 
         }
 
-        return groundYPosition;
+        return groundYPosition; 
     }
+
 }
