@@ -148,6 +148,7 @@ public class LeaderboardManager : MonoBehaviour
     private void SaveLeaderboard()
     {
         string json = JsonUtility.ToJson(new LeaderboardData(leaderboard));
+        Debug.Log($"Saving leaderboard JSON: {json}");  // Agrega este log
         PlayerPrefs.SetString(leaderboardKey, json);
         PlayerPrefs.Save();
     }
@@ -157,6 +158,8 @@ public class LeaderboardManager : MonoBehaviour
         if (PlayerPrefs.HasKey(leaderboardKey))
         {
             string json = PlayerPrefs.GetString(leaderboardKey);
+            Debug.Log($"Loaded leaderboard JSON: {json}");  // Agrega este log
+
             LeaderboardData data = JsonUtility.FromJson<LeaderboardData>(json);
 
             if (data != null && data.players != null)
