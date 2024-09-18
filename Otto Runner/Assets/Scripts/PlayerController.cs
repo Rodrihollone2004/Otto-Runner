@@ -9,19 +9,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float bufferTime = 0.2f;
     private float bufferCounter = 0f;
     private bool isGrounded = false;
-    private bool isSliding = false; 
+    private bool isSliding = false;
     private Rigidbody rb;
     private BoxCollider playerCollider;
 
-    private Vector3 originalColliderSize; 
-    private Vector3 slidingColliderSize; 
-    private Vector3 originalColliderCenter; 
+    private Vector3 originalColliderSize;
+    private Vector3 slidingColliderSize;
+    private Vector3 originalColliderCenter;
     private Vector3 slidingColliderCenter;
 
     private LeaderboardManager leaderboardManager;
     private Animator animator;
 
     [SerializeField] private AudioSource jumpAudioSource;
+
+    private Animator obstacleAnimator;
+
     void Awake()
     {
         leaderboardManager = FindObjectOfType<LeaderboardManager>();
@@ -32,8 +35,8 @@ public class PlayerController : MonoBehaviour
 
         originalColliderCenter = playerCollider.center;
         originalColliderSize = playerCollider.size;
-        slidingColliderSize = new Vector3(originalColliderSize.x, originalColliderSize.y / 2, originalColliderSize.z); 
-        slidingColliderCenter = new Vector3(originalColliderCenter.x, originalColliderCenter.y / 2, originalColliderCenter.z); 
+        slidingColliderSize = new Vector3(originalColliderSize.x, originalColliderSize.y / 2, originalColliderSize.z);
+        slidingColliderCenter = new Vector3(originalColliderCenter.x, originalColliderCenter.y / 2, originalColliderCenter.z);
     }
 
     void Update()
@@ -57,7 +60,6 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-
         if (bufferCounter > 0)
         {
             bufferCounter -= Time.deltaTime;
@@ -84,9 +86,9 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isJumping", false);
             StartSliding();
         }
-        if (Input.GetKeyUp(KeyCode.S) || 
-            Input.GetKeyUp(KeyCode.DownArrow) || 
-            Input.GetKeyUp(KeyCode.LeftShift) || 
+        if (Input.GetKeyUp(KeyCode.S) ||
+            Input.GetKeyUp(KeyCode.DownArrow) ||
+            Input.GetKeyUp(KeyCode.LeftShift) ||
             Input.GetMouseButtonUp(1))
         {
             animator.SetBool("isJumping", false);
@@ -98,15 +100,14 @@ public class PlayerController : MonoBehaviour
             rb.velocity = jumpSpeed;
             isGrounded = false;
             bufferCounter = 0;
-
         }
     }
 
     private void FastFall()
     {
-        if (!isGrounded && !isSliding && Input.GetKeyDown(KeyCode.S) || 
-            Input.GetKeyDown(KeyCode.DownArrow) || 
-            Input.GetKeyDown(KeyCode.LeftShift) || 
+        if (!isGrounded && !isSliding && Input.GetKeyDown(KeyCode.S) ||
+            Input.GetKeyDown(KeyCode.DownArrow) ||
+            Input.GetKeyDown(KeyCode.LeftShift) ||
             Input.GetMouseButtonDown(1))
         {
             rb.velocity = new Vector3(rb.velocity.x, -fastFallMultiplier, rb.velocity.z);
@@ -135,13 +136,26 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isCrawling", false);
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Banco"))
         {
-        StartSliding();
+            StartSliding();
+        }
+        else if (other.CompareTag("Nena"))
+        {
+            // Obtener el Animator del obstáculo
+            obstacleAnimator = other.GetComponentInParent<Animator>();
+
+            // Activar la animación de agarrar del obstáculo
+            if (obstacleAnimator != null)
+            {
+                obstacleAnimator.SetTrigger("Grab");
+            }
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Banco"))
@@ -149,5 +163,4 @@ public class PlayerController : MonoBehaviour
             StopSliding();
         }
     }
-
 }

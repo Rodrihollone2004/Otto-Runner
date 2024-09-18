@@ -16,7 +16,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] float maxSpawnInterval = 1.5f;
     [SerializeField] float groundYPosition = 0.55f;
     [SerializeField] float crouchYPosition = 1.0f;
-    [SerializeField] float minAirYPosition = 1.8f;
+    [SerializeField] float minAirYPosition = 2.2f;
     [SerializeField] float maxAirYPosition = 3.5f;
     [SerializeField] float spawnXPosition = 15.0f;
 
@@ -77,7 +77,8 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (distance < 200f)
         {
-            availableObstacles.AddRange(groundObstacles);
+            // availableObstacles.AddRange(groundObstacles);
+            availableObstacles.AddRange(crouchObstacles);
         }
         else if (distance >= 200f && distance < 400f)
         {

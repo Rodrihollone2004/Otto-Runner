@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Banco
+  - Leaderboard
+  - Nena
   layers:
   - Default
   - TransparentFX

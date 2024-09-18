@@ -3013,16 +3013,16 @@ MonoBehaviour:
   groundObstacles:
   - {fileID: 8097553587861485068, guid: 4fe4db3ae9225034aa790809ba1f4774, type: 3}
   airObstacles:
-  - {fileID: 7275693601263242171, guid: b6d0f238474187f41a7a25d7e9aab624, type: 3}
+  - {fileID: 7215870998374049467, guid: a919a41a662b3484ea53656ecf3ed403, type: 3}
   crouchObstacles:
-  - {fileID: 8732391041825295969, guid: 2730fbf5dc2be7e4d8ef95c28fba3fb1, type: 3}
+  - {fileID: 3624726380925297114, guid: 973a459af2fdd844fba8296209758a39, type: 3}
   benchObstacles:
   - {fileID: 98263601730784302, guid: b1854b6449e4dcf4cade3c4bbce157bb, type: 3}
   minSpawnInterval: 0.5
   maxSpawnInterval: 0.7
   groundYPosition: 0.55
-  crouchYPosition: 1
-  minAirYPosition: 1.8
+  crouchYPosition: 0
+  minAirYPosition: 2.2
   maxAirYPosition: 3.5
   spawnXPosition: 15
 --- !u!4 &1203239950
