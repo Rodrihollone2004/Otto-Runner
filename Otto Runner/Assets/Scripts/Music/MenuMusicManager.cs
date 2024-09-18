@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class MenuMusicManager : MonoBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource music;
+    public AudioSource SFX;
     public AudioClip menuMusic;
+    public AudioClip clickSound;
 
     void Start()
     {
-        audioSource.clip = menuMusic;
-        audioSource.loop = true;
-        audioSource.Play();
+        music.clip = menuMusic;
+        music.loop = true;
+        music.Play();
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFX.PlayOneShot(clip);
     }
 }
