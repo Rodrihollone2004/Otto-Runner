@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class LeaderboardData
 {
     public List<LeaderboardPlayers> players;
 
-    public LeaderboardData(List<LeaderboardPlayers> players)
+    public LeaderboardData(List<LeaderboardPlayers> playersList)
     {
-        this.players = players;
+        this.players = playersList;
     }
 }

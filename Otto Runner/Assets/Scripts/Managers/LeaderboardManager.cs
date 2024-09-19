@@ -24,8 +24,10 @@ public class LeaderboardManager : MonoBehaviour
 
     private void Awake()
     {
+        if (leaderboard == null)
+            leaderboard = new List<LeaderboardPlayers>();
+
         distanceCounter = FindObjectOfType<DistanceCounter>();
-        leaderboard = new List<LeaderboardPlayers>();
 
         if (distanceCounter == null)
         {
@@ -86,9 +88,9 @@ public class LeaderboardManager : MonoBehaviour
                 return b.Score.CompareTo(a.Score);
             });
 
-            if (leaderboard.Count > 10)
+            if (leaderboard.Count > 8)
             {
-                leaderboard = leaderboard.GetRange(0, 10);
+                leaderboard = leaderboard.GetRange(0, 8);
             }
         }
     }
@@ -104,7 +106,7 @@ public class LeaderboardManager : MonoBehaviour
 
     private void UpdateNameboardDisplay()
     {
-        nameboardText.text = "Nombre\n";
+        nameboardText.text = "Name\n";
 
         if (leaderboard != null)
         {
@@ -148,7 +150,6 @@ public class LeaderboardManager : MonoBehaviour
     private void SaveLeaderboard()
     {
         string json = JsonUtility.ToJson(new LeaderboardData(leaderboard));
-        Debug.Log($"Saving leaderboard JSON: {json}");  // Agrega este log
         PlayerPrefs.SetString(leaderboardKey, json);
         PlayerPrefs.Save();
     }
@@ -158,7 +159,6 @@ public class LeaderboardManager : MonoBehaviour
         if (PlayerPrefs.HasKey(leaderboardKey))
         {
             string json = PlayerPrefs.GetString(leaderboardKey);
-            Debug.Log($"Loaded leaderboard JSON: {json}");  // Agrega este log
 
             LeaderboardData data = JsonUtility.FromJson<LeaderboardData>(json);
 
