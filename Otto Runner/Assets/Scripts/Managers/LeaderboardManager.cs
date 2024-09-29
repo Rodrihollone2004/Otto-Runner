@@ -13,6 +13,11 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] TMP_InputField playerNameInput;
     [SerializeField] Button addButton;
 
+    [SerializeField] private TMP_Text textToDisable1;
+    [SerializeField] private TMP_Text textToDisable2;
+    [SerializeField] private TMP_Text textToDisable3;
+    [SerializeField] private Button buttonToDisable;
+
     [SerializeField] private DistanceCounter distanceCounter;
     private List<LeaderboardPlayers> leaderboard;
 
@@ -138,12 +143,22 @@ public class LeaderboardManager : MonoBehaviour
 
     public void ExitLeaderboard()
     {
+        textToDisable1.gameObject.SetActive(true);
+        textToDisable2.gameObject.SetActive(true);
+        textToDisable3.gameObject.SetActive(true);
+        buttonToDisable.gameObject.SetActive(true);
+
         GameManger.instance.IsLeaderboard = false;
         gameObjectLeaderboard.SetActive(false);
     }
 
     public void EnterLeaderboard()
     {
+        textToDisable1.gameObject.SetActive(false);
+        textToDisable2.gameObject.SetActive(false);
+        textToDisable3.gameObject.SetActive(false);
+        buttonToDisable.gameObject.SetActive(false);
+
         addButton.enabled = true;
         gameObjectLeaderboard.SetActive(true);
     }

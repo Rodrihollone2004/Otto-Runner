@@ -77,8 +77,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (distance < 200f)
         {
-            // availableObstacles.AddRange(groundObstacles);
-            availableObstacles.AddRange(crouchObstacles);
+            availableObstacles.AddRange(groundObstacles);
         }
         else if (distance >= 200f && distance < 400f)
         {

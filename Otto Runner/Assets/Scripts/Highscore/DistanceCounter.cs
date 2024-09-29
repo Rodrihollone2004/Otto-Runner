@@ -4,7 +4,7 @@ using UnityEngine;
 public class DistanceCounter : MonoBehaviour
 {
     public float playerSpeed = 15f;
-    private float distance = 6000f;
+    private float distance = 0f;
     private float highscore;
     public TMP_Text distanceText;
     public TMP_Text highscoreText;
