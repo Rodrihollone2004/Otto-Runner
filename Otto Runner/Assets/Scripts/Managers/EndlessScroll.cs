@@ -15,12 +15,14 @@ public class EndlessScroll : MonoBehaviour
     private Rigidbody rb;
 
     private Animator animator;
+    PlayerController playerController;
 
     LeaderboardManager leaderboardManager;
 
-    void Start()
+    void Awake()
     {
         leaderboardManager = FindAnyObjectByType<LeaderboardManager>();
+        playerController = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody>();
         rb.velocity = gameVelocity * scrollFactor;
         animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
@@ -48,6 +50,7 @@ public class EndlessScroll : MonoBehaviour
         animator.SetBool("isDead", true);
         gameVelocity = Vector3.zero;
         GameManger.instance.Dead = true;
+        playerController.SmokeRun.Stop();
 
         if (GameManger.instance.IsLeaderboard)
             leaderboardManager.EnterLeaderboard();

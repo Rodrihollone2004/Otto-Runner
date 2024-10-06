@@ -21,9 +21,13 @@ public class PlayerController : MonoBehaviour
     private LeaderboardManager leaderboardManager;
     private Animator animator;
 
+    [SerializeField] ParticleSystem smokeRun;
+
     [SerializeField] private AudioSource jumpAudioSource;
 
     private Animator obstacleAnimator;
+
+    public ParticleSystem SmokeRun { get => smokeRun; set => smokeRun = value; }
 
     void Awake()
     {
@@ -47,6 +51,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!GameManger.instance.Dead)
+        {
+            smokeRun.Play();
+        }
+
         isGrounded = true;
         animator.SetBool("isJumping", false);
         if (Input.GetKey(KeyCode.S) ||
@@ -72,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", true);
             bufferCounter = bufferTime;
+            smokeRun.Stop();
 
             if (jumpAudioSource != null)
             {
