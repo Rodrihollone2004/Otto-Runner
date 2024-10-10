@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         {
             smokeRun.Play();
         }
-
         isGrounded = true;
         animator.SetBool("isJumping", false);
         if (Input.GetKey(KeyCode.S) ||
@@ -79,9 +78,9 @@ public class PlayerController : MonoBehaviour
             Input.GetKeyDown(KeyCode.UpArrow) && !leaderboardManager.GameObjectLeaderboard.active ||
             Input.GetMouseButtonDown(0) && !leaderboardManager.GameObjectLeaderboard.active)
         {
+            smokeRun.Stop();
             animator.SetBool("isJumping", true);
             bufferCounter = bufferTime;
-            smokeRun.Stop();
 
             if (jumpAudioSource != null)
             {
