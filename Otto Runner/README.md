@@ -1,2 +1,0 @@
-# Otto-Runner
-Otto game
